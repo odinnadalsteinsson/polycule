@@ -1,0 +1,33 @@
+# Polycule development
+
+version: "3.1"
+
+services:
+
+    app:
+        image: php:fpm-alpine
+        volumes:
+            - .:/app:${APP_DVFS}
+
+    web:
+        image: nginx:alpine
+        ports:
+            - ${APP_IP}:80:80
+        volumes:
+            - .:/app:${APP_DVFS}
+            - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    db:
+        image: mariadb:10.2
+        environment:
+            - MYSQL_USER=dev
+            - MYSQL_PASSWORD=dev
+            - MYSQL_ROOT_PASSWORD=dev
+            - MYSQL_DATABASE=database
+        ports:
+            - ${APP_IP}:3306:3306
+        volumes:
+            - "./mysql-data:/var/lib/mysql:${APP_DVFS}"
+        networks:
+            default:
+                aliases:
+                    - ${APP_HOST}
