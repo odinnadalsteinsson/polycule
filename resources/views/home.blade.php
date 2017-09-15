@@ -4,7 +4,7 @@
 <v-layout column>
   <v-flex xs12 sm6 offset-sm3>
     <v-card hover>
-      <v-card-media class="black--text" height="300px" src="http://lorempixel.com/400/300/abstract/">
+      <v-card-media class="black--text" height="300px" src="https://lorempixel.com/400/300/abstract/">
         <v-container fill-height fluid>
           <v-layout fill-height>
             <v-flex xs12 align-end flexbox>
