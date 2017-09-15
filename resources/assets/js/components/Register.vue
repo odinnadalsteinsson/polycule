@@ -25,7 +25,6 @@
             type="password"
             autocomplete="new-password"
             required
-            :rules="passwordRules"
         ></v-text-field>
         <v-text-field
             name="password_confirmation"
@@ -35,7 +34,6 @@
             type="password"
             autocomplete="new-password-confirmation"
             required
-            :rules="passwordConfirmationRules"
         ></v-text-field>
     <v-btn @click="submit">Start</v-btn>
     <slot></slot>
