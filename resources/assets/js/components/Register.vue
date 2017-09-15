@@ -36,6 +36,7 @@
             required
         ></v-text-field>
     <v-btn @click="submit">Start</v-btn>
+    <a href="/login"><v-btn>Log ind</v-btn></a>
     <slot></slot>
   </v-form>
 </template>

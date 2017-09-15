@@ -8,18 +8,21 @@
         <v-container fill-height fluid>
           <v-layout fill-height>
             <v-flex xs12 align-end flexbox>
-              <span class="headline">Name</span>
+              <span class="headline">{{ Auth::user()->name }}</span>
             </v-flex>
           </v-layout>
         </v-container>
       </v-card-media>
+      <dropzone style="border: 0px" id="myVueDropzone" url="https://httpbin.org/post" v-on:vdropzone-success="showSuccess">
+        {{ csrf_field() }}
+      </dropzone>
       <v-card-title>
-        nickname
+        {{ Auth::user()->name }}
       </v-card-title>
       <v-card-actions>
-        <v-chip outline>tantra</v-chip>
-        <v-chip outline>bdsm</v-chip>
-        <v-chip outline>polyamorous</v-chip>
+        <v-chip class="primary primary--text" outline>tantra</v-chip>
+        <v-chip class="primary primary--text" outline>bdsm</v-chip>
+        <v-chip class="primary primary--text" outline>polyamorous</v-chip>
         <v-spacer></v-spacer>
         <v-btn icon>
           <v-icon>favorite</v-icon>
@@ -32,9 +35,6 @@
         </v-btn>
         <logout>{{ csrf_field() }}</logout>
       </v-card-actions>
-      <dropzone id="myVueDropzone" url="https://httpbin.org/post" v-on:vdropzone-success="showSuccess">
-        {{ csrf_field() }}
-      </dropzone>
     </v-card>
   </v-flex>
   <v-spacer></v-spacer>
