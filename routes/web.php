@@ -17,4 +17,5 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('/home/photo', 'HomeController@postPhoto');
 Route::get('/home', 'HomeController@index')->name('home');

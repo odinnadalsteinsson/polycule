@@ -4,7 +4,7 @@
 <v-layout column>
   <v-flex xs12 sm6 offset-sm3>
     <v-card hover>
-      <v-card-media class="black--text" height="300px" src="https://lorempixel.com/400/300/abstract/">
+      <v-card-media class="black--text" height="300px" src="{{ Auth::user()->getPhoto() }}">
         <v-container fill-height fluid>
           <v-layout fill-height>
             <v-flex xs12 align-end flexbox>
@@ -13,7 +13,7 @@
           </v-layout>
         </v-container>
       </v-card-media>
-      <dropzone style="border: 0px" id="myVueDropzone" url="https://httpbin.org/post" v-on:vdropzone-success="showSuccess">
+      <dropzone style="border: 0px" id="myVueDropzone" url="/home/photo" v-on:vdropzone-success="showSuccess" :max-file-size-in-m-b="100">
         {{ csrf_field() }}
       </dropzone>
       <v-card-title>
