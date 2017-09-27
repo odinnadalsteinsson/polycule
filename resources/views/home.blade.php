@@ -13,6 +13,10 @@
           </v-layout>
         </v-container>
       </v-card-media>
+      {{-- <image-uploader>
+          <dropzone id="ImageUploader" url="/home/photo" :use-custom-dropzone-options=true :dropzone-options="dzOptions" v-on:vdropzone-success="showSuccess">
+          </dropzone>
+      </image-uploader> --}}
       <dropzone style="border: 0px" id="myVueDropzone" url="/home/photo" v-on:vdropzone-success="showSuccess" :max-file-size-in-m-b="100">
         {{ csrf_field() }}
       </dropzone>

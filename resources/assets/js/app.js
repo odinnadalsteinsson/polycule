@@ -19,6 +19,28 @@ Vue.component('login', require('./components/Login.vue'));
 Vue.component('logout', require('./components/Logout.vue'));
 Vue.component('register', require('./components/Register.vue'));
 
+Vue.component('image-uploader', {
+  components: {
+    Dropzone
+  },
+  data() {
+    return {
+      dzOptions: {
+        dictDefaultMessage: 'Drop your images here or click to choose (at least 400x300px)',
+        acceptedFiles: '.jpg,.jpeg,.png',
+        maxFiles: 2,
+        maxFilesize: 100,
+        headers: {'X-CSRF-TOKEN': Laravel.csrfToken}
+      },
+    };
+  },
+  methods: {
+    'showSuccess': function (file) {
+      console.log('A file was successfully uploaded')
+    }
+  }
+});
+
 const app = new Vue({
     el: '#app',
     components: {
