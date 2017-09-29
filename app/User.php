@@ -28,10 +28,10 @@ class User extends Authenticatable implements HasMediaConversions
     public function getPhoto()
     {
         $photos = $this->getMedia();
-        if (!empty($photos)) {
+        if ($photos->count()) {
             return $photos->random()->getUrl('300px');
         }
-        return 'https://lorempixel.com/400/300/abstract/';
+        return 'https://unsplash.it/400/300?random';
     }
 
     /**
