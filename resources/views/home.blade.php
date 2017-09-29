@@ -20,6 +20,23 @@
       <dropzone style="border: 0px" id="myVueDropzone" url="/home/photo" v-on:vdropzone-success="showSuccess" :max-file-size-in-m-b="100">
         {{ csrf_field() }}
       </dropzone>
+      <v-container fluid v-bind="{ [`grid-list-xs`]: true }">
+        <v-layout row wrap>
+          <v-flex
+            xs4
+            v-for="n in 3"
+            :key="n"
+          >
+            <v-card flat tile>
+              <v-card-media
+                :src="`https://unsplash.it/150/300?image=${Math.floor(Math.random() * 100) + 1}`"
+                height="150px"
+              >
+              </v-card-media>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
       <v-card-title>
         {{ Auth::user()->name }}
       </v-card-title>
