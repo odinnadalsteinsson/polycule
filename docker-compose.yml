@@ -28,7 +28,7 @@ services:
         ports:
             - ${APP_IP}:3306:3306
         volumes:
-            - "./mysql-data:/var/lib/mysql:${APP_DVFS}"
+            - "~/mysql/${APP_HOST}:/var/lib/mysql:${APP_DVFS}"
         networks:
             default:
                 aliases:
