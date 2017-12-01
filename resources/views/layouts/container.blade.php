@@ -14,12 +14,20 @@
           'csrfToken' => csrf_token(),
         ]); ?>
       </script>
-      <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us17.list-manage.com","uuid":"8635f821a25194ed405489111","lid":"92f595453a"}) })</script>
   </head>
   <body>
     @include('gtm.body')
     <div id="app">
-      @yield('content')
+      <v-app>
+        <main>
+          <v-container>
+            @if (session('status'))
+              <v-chip>{{ session('status') }}</v-chip>
+            @endif
+            @yield('content')
+          </v-container>
+        </main>
+      </v-app>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
   </body>
