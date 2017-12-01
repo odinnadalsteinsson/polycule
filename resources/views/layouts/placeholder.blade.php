@@ -5,7 +5,7 @@
   <v-parallax height="800px" src="/images/love-images-1-1500x938.jpg" jumbotron>
     <v-content>
       <v-toolbar dark color="red darken-4">
-        <v-toolbar-title class="white--text">{{ env('APP_NAME') }}</v-toolbar-title>
+        <v-toolbar-title class="white--text"><img height="16" src="/images/polydating_logo_top-1.png"> {{ env('APP_NAME') }}</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-icon>fa-heart-o</v-icon>
         <v-icon>fa-heart</v-icon>
