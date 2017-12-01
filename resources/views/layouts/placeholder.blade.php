@@ -5,11 +5,11 @@
   <v-parallax height="800px" src="/images/love-images-1-1500x938.jpg" jumbotron>
     <v-content>
       <v-toolbar dark color="red darken-4">
-        <v-toolbar-title class="white--text"><img height="16" src="/images/polydating_logo_top-1.png"> {{ env('APP_NAME') }}</v-toolbar-title>
+        <v-toolbar-title class="white--text">{{ env('APP_NAME') }}</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-icon>fa-heart-o</v-icon>
-        <v-icon>fa-heart</v-icon>
-        <v-icon>fa-heart-o</v-icon>
+        <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
+        <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
+        <img height="30" src="/images/polydating_logo_top-1.png">
       </v-toolbar>
       <v-container fluid fill-height>
           <v-layout column align-center justify-center>
@@ -27,7 +27,7 @@
     </v-content>
   </v-parallax>
   <v-footer color="red darken-4" app>
-    <span class="white--text">&copy; 2017 polydating.dk</span>
+    <span class="white--text">Copyright &copy; 2017 polydating.dk</span>
   </v-footer>
 </v-app>
 @endsection
