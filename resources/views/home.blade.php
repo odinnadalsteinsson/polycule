@@ -1,4 +1,4 @@
-@extends('layouts.container')
+@extends('layouts.content')
 
 @section('content')
 <v-layout column>
@@ -20,7 +20,7 @@
       <dropzone style="border: 0px" id="myVueDropzone" url="/home/photo" v-on:vdropzone-success="showSuccess" :max-file-size-in-m-b="100">
         {{ csrf_field() }}
       </dropzone>
-      <v-container fluid v-bind="{ [`grid-list-xs`]: true }">
+      {{-- <v-container fluid v-bind="{ [`grid-list-xs`]: true }">
         <v-layout row wrap>
           <v-flex
             xs4
@@ -36,24 +36,18 @@
             </v-card>
           </v-flex>
         </v-layout>
-      </v-container>
+      </v-container> --}}
       <v-card-title>
         {{ Auth::user()->name }}
       </v-card-title>
       <v-card-actions>
-        <v-chip class="primary primary--text" outline>tantra</v-chip>
-        <v-chip class="primary primary--text" outline>bdsm</v-chip>
-        <v-chip class="primary primary--text" outline>polyamorous</v-chip>
+        @foreach (Auth::user()->tagsWithType('gender') as $tag)
+          <v-chip class="primary primary--text" outline>{{ $tag->name }}</v-chip>
+        @endforeach
+        @foreach (Auth::user()->tagsWithType('relationship-status') as $tag)
+          <v-chip>{{ $tag->name }}</v-chip>
+        @endforeach
         <v-spacer></v-spacer>
-        <v-btn icon>
-          <v-icon>favorite</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>bookmark</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>share</v-icon>
-        </v-btn>
         <logout>{{ csrf_field() }}</logout>
       </v-card-actions>
     </v-card>

@@ -2,9 +2,9 @@
     <v-form v-model="valid" ref="form" action="/register" method="post">
         <v-text-field
             name="name"
-            label="Name"
+            label="Navn"
             v-model="name"
-            hint="Your real name, please"
+            hint="Brug dit fulde navn"
             autocomplete="new-name"
             required
             :rules="nameRules"
@@ -19,8 +19,8 @@
         ></v-text-field>
         <v-text-field
             name="password"
-            label="Enter your password"
-            hint="At least 8 characters"
+            label="Vælg dig en adgangskode"
+            hint="Mindst 8 tegn"
             min="8"
             type="password"
             autocomplete="new-password"
@@ -28,15 +28,14 @@
         ></v-text-field>
         <v-text-field
             name="password_confirmation"
-            label="Confirm your password"
-            hint="At least 8 characters"
+            label="Bekræft adgangskoden"
+            hint="Mindst 8 tegn"
             min="8"
             type="password"
             autocomplete="new-password-confirmation"
             required
         ></v-text-field>
-    <v-btn @click="submit">Start</v-btn>
-    <a href="/login"><v-btn>Log ind</v-btn></a>
+    <v-btn @click="submit">Videre</v-btn>
     <slot></slot>
   </v-form>
 </template>
@@ -48,20 +47,20 @@
         valid: false,
         password: '',
         passwordRules: [
-          (v) => !!v || 'Password is required'
+          (v) => !!v || 'Du skal indtaste din adgangskode her'
         ],
         password_confirmation: '',
         passwordConfirmationRules: [
-          (v) => !!v || 'Password confirmation is required'
+          (v) => !!v || 'Bekræft din adgangkode'
         ],
         name: '',
         nameRules: [
-          (v) => !!v || 'Name is required'
+          (v) => !!v || 'Du skal skrive dit navn her'
         ],
         email: '',
         emailRules: [
-            (v) => !!v || 'E-mail is required',
-            (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+            (v) => !!v || 'Du skal skrive din e-mail adresse her',
+            (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail adressen er ugyldig'
         ]
       }
     },

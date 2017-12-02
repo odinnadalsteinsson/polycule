@@ -1,6 +1,6 @@
 <template>
   <v-form ref="form" action="/logout" method="post">
-    <v-btn @click="submit">Logout</v-btn>
+    <v-btn @click="submit">Log ud</v-btn>
     <slot></slot>
   </v-form>
 </template>

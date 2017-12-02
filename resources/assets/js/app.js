@@ -16,6 +16,7 @@ Vue.use(Vuetify)
 Vue.use(Vuelidate)
 
 Vue.component('login', require('./components/Login.vue'));
+Vue.component('login2', require('./components/Login2.vue'));
 Vue.component('logout', require('./components/Logout.vue'));
 Vue.component('register', require('./components/Register.vue'));
 

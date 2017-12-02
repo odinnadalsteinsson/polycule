@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Tags\Tag;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $genders = Tag::getWithType('gender');
+        // $gender = Tag::findOrCreate($genders[0]->name, 'gender');
+        // $statuses = Tag::getWithType('relationship-status');
+        // $status = Tag::findOrCreate($statuses[0]->name, 'relationship-status');
+        // $user = Auth::user();
+        // $user->attachTag($gender);
+        // $user->attachTag($status);
         return view('home');
     }
 
