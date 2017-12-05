@@ -36,12 +36,13 @@
         }
       })});
       </script>
+      @stack('head')
   </head>
   <body>
     @include('gtm.body')
     <div id="app">
       <v-app>
-        <v-parallax height="800px" src="/images/love-images-1-1500x938.jpg" {{ $jumbotron ? 'jumbotron' : '' }}>
+        <v-parallax height="800px" src="/images/{{ env('BACKGROUND_PICTURE') }}" {{ $jumbotron ? 'jumbotron' : '' }}>
           <v-content>
             <v-toolbar color="red darken-4" class="white--text">
               <v-toolbar-title class="white--text">{{ env('APP_NAME') }}</v-toolbar-title>

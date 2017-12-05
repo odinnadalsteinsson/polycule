@@ -32,7 +32,7 @@ class HomeController extends Controller
         // $user = Auth::user();
         // $user->attachTag($gender);
         // $user->attachTag($status);
-        return view('home');
+        return view('home', [ 'user' => Auth::user() ]);
     }
 
     public function postPhoto()

@@ -14,14 +14,18 @@
 // Registration and login
 Auth::routes();
 
+// Facebook login
+Route::get('login/facebook', 'Auth\LoginController@redirectToFacebook');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookCallback');
+
 // Front page
 Route::get('/', function () {
     return view('welcome');
 });
 
 // Photo uploads
-Route::post('/home/photo', 'HomeController@postPhoto');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('home/photo', 'HomeController@postPhoto');
+Route::get('home', 'HomeController@index')->name('home');
 
 // Import from mailchimp
 Route::get('users/import', 'UserController@import');

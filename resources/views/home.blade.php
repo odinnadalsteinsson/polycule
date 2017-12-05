@@ -1,10 +1,21 @@
 @extends('layouts.content')
 
+@push('head')
+{{-- Facebook callback appends #_=_ hash underscore to the Return URL. This gets rid of it --}}
+<script type="text/javascript">
+    if (window.location.hash == '#_=_') {
+        history.replaceState
+            ? history.replaceState(null, null, window.location.href.split('#')[0])
+            : window.location.hash = '';
+    }
+</script>
+@endpush
+
 @section('content')
 <v-layout column>
   <v-flex xs12 sm6 offset-sm3>
     <v-card hover>
-      <v-card-media class="black--text" height="300px" src="{{ Auth::user()->getPhoto() }}">
+      <v-card-media class="black--text" height="300px" src="{{ !empty($user->avatar) ? $user->avatar : $user->getPhoto() }}">
         <v-container fill-height fluid>
           <v-layout fill-height>
             <v-flex xs12 align-end flexbox>
