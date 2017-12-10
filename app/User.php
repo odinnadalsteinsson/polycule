@@ -36,7 +36,7 @@ class User extends Authenticatable implements HasMediaConversions
 
     public function hasPhoto()
     {
-        return (bool)$this->getMedia()->count();
+        return (bool)($this->getMedia()->count() || !empty($this->avatar));
     }
 
     public function getPhoto($type = '300px')
@@ -44,6 +44,9 @@ class User extends Authenticatable implements HasMediaConversions
         $photos = $this->getMedia();
         if ($photos->count()) {
             return $photos->random()->getUrl($type);
+        }
+        if (!empty($this->avatar)) {
+            return $this->avatar;
         }
         return 'https://unsplash.it/400/300?random';
     }
@@ -54,7 +57,7 @@ class User extends Authenticatable implements HasMediaConversions
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar',
     ];
 
     /**

@@ -51,7 +51,7 @@
               <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
               <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
               @if (Auth::guest())
-                <a href="/login"><v-chip>Log ind</v-chip></a>
+                <a href="/login"><v-btn>Log ind</v-btn></a>
               @endif
             </v-toolbar>
             <v-container fluid fill-height>

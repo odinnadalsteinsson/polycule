@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0088c11bfe98b7eb0e2f8730493a869",
+    "content-hash": "6172067b7f1dedecbb8bb378d7785eed",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -1647,6 +1647,54 @@
                 "jsonpath"
             ],
             "time": "2016-12-03T22:08:25+00:00"
+        },
+        {
+            "name": "naviocean/laravel-nameparser",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/naviocean/laravel-nameparser.git",
+                "reference": "1e43f52667a1ccfc29888016624f2e0429076cb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/naviocean/laravel-nameparser/zipball/1e43f52667a1ccfc29888016624f2e0429076cb9",
+                "reference": "1e43f52667a1ccfc29888016624f2e0429076cb9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.x",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-0": {
+                    "NaviOcean\\Laravel": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "NaviOcean",
+                    "email": "navi.ocean@outlook.com",
+                    "homepage": "http://naviocean.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP library to split names into their respective components. Besides detecting first and last names, this library attempts to handle prefixes, suffixes, initials and compound last names like 'Von Fange'. It also normalizes prefixes (Mister -> Mr.) and fixes capitalization (JOHN SMITH -> John Smith).",
+            "homepage": "https://github.com/naviocean/laravel-nameparser",
+            "keywords": [
+                "name parser laravel 5",
+                "php-nameparser",
+                "php-parse-name"
+            ],
+            "time": "2015-12-07T14:01:05+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -5791,6 +5839,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "naviocean/laravel-nameparser": 20,
         "silber/bouncer": 10
     },
     "prefer-stable": false,

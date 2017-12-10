@@ -18,6 +18,7 @@
             </v-list-tile-content>
           </v-list-tile>
         @endforeach
+        {{ $users->links() }}
       </v-list>
     </v-card>
   </v-flex>

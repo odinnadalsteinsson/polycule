@@ -18,6 +18,10 @@ Auth::routes();
 Route::get('login/facebook', 'Auth\LoginController@redirectToFacebook');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookCallback');
 
+// Facebook register
+Route::get('register/facebook', 'Auth\RegisterController@redirectToFacebook');
+Route::get('register/facebook/callback', 'Auth\RegisterController@handleFacebookCallback');
+
 // Front page
 Route::get('/', function () {
     return view('welcome');

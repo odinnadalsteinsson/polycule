@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use NaviOcean\Laravel\NameParser as FullNameParser;
 use Spatie\Tags\Tag;
 
 class HomeController extends Controller
@@ -32,7 +33,9 @@ class HomeController extends Controller
         // $user = Auth::user();
         // $user->attachTag($gender);
         // $user->attachTag($status);
-        return view('home', [ 'user' => Auth::user() ]);
+        $parser = new FullNameParser();
+        $names = $parser->parse_name(Auth::user()->name);
+        return view('home', [ 'user' => Auth::user(), 'first' => $names['fname'], 'last' => $names['lname'] ]);
     }
 
     public function postPhoto()

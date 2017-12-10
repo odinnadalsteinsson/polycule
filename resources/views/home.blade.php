@@ -15,11 +15,11 @@
 <v-layout column>
   <v-flex xs12 sm6 offset-sm3>
     <v-card hover>
-      <v-card-media class="black--text" height="300px" src="{{ !empty($user->avatar) ? $user->avatar : $user->getPhoto() }}">
+      <v-card-media class="black--text" height="300px" src="{{ $user->getPhoto() }}">
         <v-container fill-height fluid>
           <v-layout fill-height>
             <v-flex xs12 align-end flexbox>
-              <span class="headline">{{ Auth::user()->name }}</span>
+              <span class="headline">{{ Auth::user()->name }} | {{ $first }} | {{ $last }}</span>
             </v-flex>
           </v-layout>
         </v-container>

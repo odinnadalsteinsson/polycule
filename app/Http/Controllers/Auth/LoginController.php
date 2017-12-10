@@ -53,7 +53,7 @@ class LoginController extends Controller
         ])->scopes([
             'email', 'public_profile', 'user_friends',
         ])->user();
-        dd($facebook_user);
+        //dd($facebook_user);
         $user = User::whereEmail($facebook_user->getEmail())->first();
 
         // Login the user and remember

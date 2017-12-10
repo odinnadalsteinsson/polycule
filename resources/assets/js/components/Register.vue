@@ -2,16 +2,16 @@
     <v-form v-model="valid" ref="form" action="/register" method="post">
         <v-text-field
             name="name"
-            label="Navn"
+            label="Indtast dit navn"
             v-model="name"
-            hint="Brug dit fulde navn"
+            hint="Vi anbefaler at du skriver dit fulde og rigtige navn"
             autocomplete="new-name"
             required
             :rules="nameRules"
         ></v-text-field>
         <v-text-field
             name="email"
-            label="E-mail"
+            label="Indtast din e-mail adresse"
             v-model="email"
             autocomplete="new-email"
             required
@@ -36,6 +36,12 @@
             required
         ></v-text-field>
     <v-btn @click="submit">Videre</v-btn>
+    eller ...
+    <a href="/register/facebook" style="text-decoration: none">
+      <v-btn style="background-color: #3b5998; color: white">
+        <v-icon>fa-facebook</v-icon>&nbsp;&nbsp;Opret med facebook
+      </v-btn>
+    </a>
     <slot></slot>
   </v-form>
 </template>

@@ -6,6 +6,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Socialite;
 
 class RegisterController extends Controller
 {
@@ -65,6 +68,39 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+    }
+
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')
+            ->with(['redirect_uri' => url('register/facebook/callback')])
+            ->redirect();
+    }
+
+    public function handleFacebookCallback()
+    {
+        // Get facebook user details
+        $facebook_user = Socialite::driver('facebook')->fields([
+            'name', 'first_name', 'last_name', 'email', 'gender', 'age_range', 'locale', 'cover',
+        ])->scopes([
+            'email', 'public_profile', 'user_friends',
+        ])->user();
+        dd($facebook_user);
+        // Get the user if we have them already
+        $user = User::whereEmail($facebook_user->getEmail())->first();
+        if ($user) {
+            // Login the user
+            Auth::login($user, true);
+            return redirect('home');
+        }
+
+        // Otherwise create them now with a random password
+        return $created = User::create([
+            'name' => $facebook_user->getName(),
+            'email' => $facebook_user->getEmail(),
+            'avatar' => $facebook_user->avatar_original,
             'password' => bcrypt($data['password']),
         ]);
     }
