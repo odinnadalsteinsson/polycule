@@ -15,46 +15,12 @@
 <v-layout row wrap>
   <v-flex d-flex xs12 sm6 md4>
     <v-card>
-      <v-card-title primary-title>
-          <div>
-            <h3 class="headline mb-0">{{ Auth::user()->name }}</h3>
-            <div>{{ $first }} | {{ $last }}</div>
-          </div>
-        </v-card-title>
-      <v-card-media class="black--text" src="{{ $user->getPhoto() }}" height="300px">
-        {{-- <v-container fill-height fluid>
-          <v-layout fill-height>
-            <v-flex xs12 align-end flexbox>
-              <span class="headline">{{ Auth::user()->name }} | {{ $first }} | {{ $last }}</span>
-            </v-flex>
-          </v-layout>
-        </v-container> --}}
+      <v-card-media class="black--text" src="{{ $user->getPhoto() }}" height="400px">
       </v-card-media>
-      {{-- <image-uploader>
-          <dropzone id="ImageUploader" url="/home/photo" :use-custom-dropzone-options=true :dropzone-options="dzOptions" v-on:vdropzone-success="showSuccess">
-          </dropzone>
-      </image-uploader> --}}
       <dropzone style="border: 0px" id="myVueDropzone" url="/home/photo" v-on:vdropzone-success="showSuccess" :max-file-size-in-m-b="100">
         {{ csrf_field() }}
       </dropzone>
-      {{-- <v-container fluid v-bind="{ [`grid-list-xs`]: true }">
-        <v-layout row wrap>
-          <v-flex
-            xs4
-            v-for="n in 3"
-            :key="n"
-          >
-            <v-card flat tile>
-              <v-card-media
-                :src="`https://unsplash.it/150/300?image=${Math.floor(Math.random() * 100) + 1}`"
-                height="150px"
-              >
-              </v-card-media>
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container> --}}
-      <v-card-actions>
+      {{-- <v-card-actions>
         @foreach (Auth::user()->tagsWithType('gender') as $tag)
           <v-chip class="primary primary--text" outline>{{ $tag->name }}</v-chip>
         @endforeach
@@ -62,27 +28,30 @@
           <v-chip>{{ $tag->name }}</v-chip>
         @endforeach
         <v-spacer></v-spacer>
-      </v-card-actions>
+      </v-card-actions> --}}
     </v-card>
   </v-flex>
   <v-flex d-flex xs12 sm6 md3>
     <v-layout row wrap>
       <v-flex d-flex>
         <v-card color="indigo" dark>
-          <v-card-text>hest</v-card-text>
+          <v-card-title primary-title>
+            <div>
+              <h3 class="headline mb-0">{{ Auth::user()->name }}</h3>
+              <div>Polyamourøs fri-elskende tantriker med forkærlighed for shamanisme og spiritualitet ❤️ og IT nørd 😘</div>
+            </div>
+          </v-card-title>
+          <v-chip color="primary" text-color="white">Primary</v-chip>
+          <v-chip color="secondary" text-color="white">Secondary</v-chip>
+          <v-chip color="red" text-color="white">Colored Chip</v-chip>
+          <v-chip color="green" text-color="white">Colored Chip</v-chip>
+          <v-card-text></v-card-text>
         </v-card>
       </v-flex>
       <v-flex d-flex>
         <v-layout row wrap>
-          <v-flex d-flex
-            v-for="n in 2"
-            :key="n"
-            xs12
-          >
-            <v-card
-              color="red lighten-2"
-              dark
-            >
+          <v-flex d-flex v-for="n in 2" :key="n" xs12>
+            <v-card color="red lighten-2" dark>
             <v-card-text>hest</v-card-text>
             </v-card>
           </v-flex>
@@ -100,7 +69,5 @@
       <v-card-text>hest</v-card-text>
     </v-card>
   </v-flex>
-
-  {{-- <v-spacer></v-spacer> --}}
 </v-layout>
 @endsection

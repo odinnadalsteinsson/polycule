@@ -27,7 +27,7 @@ Vue.component('image-uploader', {
   data() {
     return {
       dzOptions: {
-        dictDefaultMessage: 'Drop your images here or click to choose (at least 400x300px)',
+        dictDefaultMessage: 'Drop your images here or click to choose (at least 400x400px)',
         acceptedFiles: '.jpg,.jpeg,.png',
         maxFiles: 2,
         maxFilesize: 100,
