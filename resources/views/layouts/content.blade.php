@@ -41,26 +41,26 @@
   <body>
     @include('gtm.body')
     <div id="app">
-      <v-app>
-        <v-parallax height="800px" src="/images/{{ env('BACKGROUND_PICTURE') }}" {{ $jumbotron ? 'jumbotron' : '' }}>
-          <v-content>
-            <v-toolbar color="red darken-4" class="white--text">
-              <v-toolbar-title class="white--text">{{ env('APP_NAME') }}</v-toolbar-title>
-              <v-spacer></v-spacer>
-              <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
-              <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
-              <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
-              @if (Auth::guest())
-                <a href="/login"><v-btn>Log ind</v-btn></a>
-              @endif
-            </v-toolbar>
-            <v-container fluid fill-height>
-              @yield('content')
-            </v-container>
-          </v-content>
-        </v-parallax>
+      <v-app style="background-image: url({{ "/images/" . env('BACKGROUND_PICTURE') }}); background-size: cover">
+        <v-content>
+          <v-toolbar color="red darken-4" class="white--text">
+            <v-toolbar-title class="white--text"><a style="color: inherit; text-decoration: inherit;" href="/">{{ env('APP_NAME') }}</a></v-toolbar-title>
+            <v-spacer></v-spacer>
+            <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
+            <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
+            <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
+            @if (Auth::guest())
+              <a href="/login"><v-btn>Log ind</v-btn></a>
+            @else
+              <logout>{{ csrf_field() }}</logout>
+            @endif
+          </v-toolbar>
+          <v-container fluid grid-list-md>
+            @yield('content')
+          </v-container>
+        </v-content>
         <v-footer color="red darken-4" app>
-          <span class="white--text">Copyright &copy; 2017 polydating.dk</span>
+          <span class="white--text">Copyright &copy; 2018 polydating.dk</span>
         </v-footer>
       </v-app>
     </div>

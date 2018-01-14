@@ -3,7 +3,7 @@
 @section('content')
 <v-layout column>
   <v-flex xs12 sm6 offset-sm3>
-    <v-card hover>
+    <v-card>
       <v-card-title>
         <v-flex fluid>
           <h1>Log ind på polydating her</h1>

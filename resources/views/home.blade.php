@@ -12,17 +12,23 @@
 @endpush
 
 @section('content')
-<v-layout column>
-  <v-flex xs12 sm6 offset-sm3>
-    <v-card hover>
-      <v-card-media class="black--text" height="300px" src="{{ $user->getPhoto() }}">
-        <v-container fill-height fluid>
+<v-layout row wrap>
+  <v-flex d-flex xs12 sm6 md4>
+    <v-card>
+      <v-card-title primary-title>
+          <div>
+            <h3 class="headline mb-0">{{ Auth::user()->name }}</h3>
+            <div>{{ $first }} | {{ $last }}</div>
+          </div>
+        </v-card-title>
+      <v-card-media class="black--text" src="{{ $user->getPhoto() }}" height="300px">
+        {{-- <v-container fill-height fluid>
           <v-layout fill-height>
             <v-flex xs12 align-end flexbox>
               <span class="headline">{{ Auth::user()->name }} | {{ $first }} | {{ $last }}</span>
             </v-flex>
           </v-layout>
-        </v-container>
+        </v-container> --}}
       </v-card-media>
       {{-- <image-uploader>
           <dropzone id="ImageUploader" url="/home/photo" :use-custom-dropzone-options=true :dropzone-options="dzOptions" v-on:vdropzone-success="showSuccess">
@@ -48,9 +54,6 @@
           </v-flex>
         </v-layout>
       </v-container> --}}
-      <v-card-title>
-        {{ Auth::user()->name }}
-      </v-card-title>
       <v-card-actions>
         @foreach (Auth::user()->tagsWithType('gender') as $tag)
           <v-chip class="primary primary--text" outline>{{ $tag->name }}</v-chip>
@@ -59,10 +62,45 @@
           <v-chip>{{ $tag->name }}</v-chip>
         @endforeach
         <v-spacer></v-spacer>
-        <logout>{{ csrf_field() }}</logout>
       </v-card-actions>
     </v-card>
   </v-flex>
-  <v-spacer></v-spacer>
+  <v-flex d-flex xs12 sm6 md3>
+    <v-layout row wrap>
+      <v-flex d-flex>
+        <v-card color="indigo" dark>
+          <v-card-text>hest</v-card-text>
+        </v-card>
+      </v-flex>
+      <v-flex d-flex>
+        <v-layout row wrap>
+          <v-flex d-flex
+            v-for="n in 2"
+            :key="n"
+            xs12
+          >
+            <v-card
+              color="red lighten-2"
+              dark
+            >
+            <v-card-text>hest</v-card-text>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-flex>
+    </v-layout>
+  </v-flex>
+  <v-flex d-flex xs12 sm6 md2 child-flex>
+    <v-card color="green lighten-2" dark>
+      <v-card-text>hest</v-card-text>
+    </v-card>
+  </v-flex>
+  <v-flex d-flex xs12 sm6 md3>
+    <v-card color="blue lighten-2" dark>
+      <v-card-text>hest</v-card-text>
+    </v-card>
+  </v-flex>
+
+  {{-- <v-spacer></v-spacer> --}}
 </v-layout>
 @endsection
