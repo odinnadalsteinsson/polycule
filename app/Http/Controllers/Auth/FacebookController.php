@@ -35,7 +35,7 @@ class FacebookController extends Controller
                 'name' => $facebook_user->getName(),
                 'email' => $facebook_user->getEmail(),
                 'avatar' => $facebook_user->avatar_original,
-                'password' => bcrypt($data['password']),
+                'password' => bcrypt(str_random()),
             ]);
         }
 
