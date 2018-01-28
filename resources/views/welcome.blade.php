@@ -2,7 +2,7 @@
 
 @section('content')
 <v-layout column align-center justify-center>
-  <v-flex xs12><br>
+  <v-flex xs12 class="white--text"><br>
     <p><strong>Velkommen til {{ env('APP_NAME') }}!</strong></p>
     <p>Snart åbner nordens første datingside dedikeret til mennesker, der ønsker alternative, åbne eller polyamorøse forhold.</p>
     <p>Vi har nu {{ Newsletter::getMembers()['total_items'] }} tilmeldte på mailinglisten! :-)</p>
