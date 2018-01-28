@@ -39,33 +39,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    public function redirectToFacebook()
-    {
-        return Socialite::driver('facebook')
-            ->with(['redirect_uri' => url('login/facebook/callback')])
-            ->redirect();
-    }
-
-    public function handleFacebookCallback()
-    {
-        // Get facebook user details
-        $facebook_user = Socialite::driver('facebook')->user();
-        // $facebook_user = Socialite::driver('facebook')->fields([
-        //     'name', 'first_name', 'last_name', 'email', 'gender', 'age_range', 'locale', 'cover',
-        // ])->scopes([
-        //     'email', 'public_profile', 'user_friends',
-        // ])->user();
-
-        // Get the user if we have them already
-        $user = User::whereEmail($facebook_user->getEmail())->first();
-        if ($user) {
-            // Save the current avatar and login the user
-            $user->avatar = $facebook_user->avatar_original;
-            $user->save();
-            Auth::login($user, true);
-            return redirect('home');
-        }
-        return redirect('login');
-    }
 }

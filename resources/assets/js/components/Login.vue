@@ -18,7 +18,7 @@
         :rules="passwordRules"
     ></v-text-field>
     <v-btn @click="submit">Log ind</v-btn>
-    <a href="/login/facebook" style="text-decoration: none">
+    <a href="/auth/facebook" style="text-decoration: none">
       <v-btn style="background-color: #3b5998; color: white">
         <v-icon>fa-facebook</v-icon>&nbsp;&nbsp;Log ind med facebook
       </v-btn>
