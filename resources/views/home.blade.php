@@ -1,16 +1,5 @@
 @extends('layouts.content')
 
-@push('head')
-{{-- Facebook callback appends #_=_ hash underscore to the Return URL. This gets rid of it --}}
-<script type="text/javascript">
-    if (window.location.hash == '#_=_') {
-        history.replaceState
-            ? history.replaceState(null, null, window.location.href.split('#')[0])
-            : window.location.hash = '';
-    }
-</script>
-@endpush
-
 @section('content')
 <v-layout row wrap>
   <v-flex d-flex xs12 sm6 md4>
