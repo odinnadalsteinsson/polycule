@@ -6,7 +6,7 @@
     <v-card hover>
       <v-card-title>
         <v-flex fluid>
-          <h1>Opret din gratis polydating profil nu</h1>
+          <h1>Opret din gratis {{ env('APP_NAME') }} profil nu</h1>
           <register>
             {{ csrf_field() }}
           </register>

@@ -6,7 +6,7 @@
     <v-card>
       <v-card-title>
         <v-flex fluid>
-          <h1>Log ind på polydating her</h1>
+          <h1>Log ind på {{ env('APP_NAME') }} her</h1>
           <login>
             {{ csrf_field() }}
           </login>
