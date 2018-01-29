@@ -50,12 +50,17 @@
   </v-flex>
   <v-flex d-flex xs12 sm6 md2 child-flex>
     <v-card color="green lighten-2" dark>
-      <v-card-text>hest</v-card-text>
+      <v-card-text>
+        hest
+      </v-card-text>
     </v-card>
   </v-flex>
   <v-flex d-flex xs12 sm6 md3>
     <v-card color="blue lighten-2" dark>
-      <v-card-text>hest</v-card-text>
+      <v-card-text>
+        <chips></chips>
+        hest
+      </v-card-text>
     </v-card>
   </v-flex>
 </v-layout>
