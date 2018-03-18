@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Bouncer;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Spatie\Tags\Tag;
 use Socialite;
 
 class FacebookController extends Controller
@@ -32,16 +34,24 @@ class FacebookController extends Controller
             $user->avatar = $facebook_user->avatar_original;
             $user->save();
         } else {
-            User::create([
-                'name' => $facebook_user->getName(),
-                'email' => $facebook_user->getEmail(),
-                'avatar' => $facebook_user->avatar_original,
-                'password' => bcrypt(str_random()),
-            ]);
+            $user = new User();
+            $user->name = $facebook_user->getName();
+            $user->email = $facebook_user->getEmail();
+            $user->avatar = $facebook_user->avatar_original;
+            $user->password = bcrypt(str_random());
+            $user->save();
         }
 
         // Login and go to the profile home page
         Auth::login($user, true);
-        return redirect('home');
+        if ($user->email == 'odinn@adalsteinsson.com') {
+            Bouncer::assign('admin')->to($user);
+            $gender = Tag::findOrCreate('Mand', 'gender');
+            $user->attachTag($gender);
+            $status = Tag::findOrCreate('I ét forhold', 'relationship-status');
+            $user->attachTag($status);
+
+        }
+        return redirect('users/' . $user->id);
     }
 }

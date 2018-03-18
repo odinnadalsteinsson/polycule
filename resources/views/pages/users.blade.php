@@ -11,14 +11,20 @@
         @foreach ($users as $user)
           <v-list-tile avatar>
             <v-list-tile-avatar>
-              <img src="{{ $user->hasPhoto() ? $user->getPhoto('40x40') : Gravatar::src($user->email) }}"/>
+              <img src="{{ $user->getPhoto('40') }}" height="40px"/>
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title>{{ empty($user->name) ? '(navn mangler)' : $user->name }}</v-list-tile-title>
+              <v-list-tile-title><a href="/users/{{ $user->id}}">{{ $user->name ?: 'Medlem #' . $user->id }}</a>
+                @if (Auth::user()->isAn('admin'))
+                  ({{ $user->email }})
+                @endif
+              </v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         @endforeach
-        {{ $users->links() }}
+        <v-card-text>
+          <center>{{ $users->links('molecules.pagination') }}</center>
+        </v-card-text>
       </v-list>
     </v-card>
   </v-flex>

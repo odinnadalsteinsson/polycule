@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 // Photo uploads
-Route::post('home/photo', 'HomeController@postPhoto');
+Route::post('home/photo/{user}', 'HomeController@postPhoto');
 Route::get('home', 'HomeController@index')->name('home');
 
 // Import from mailchimp

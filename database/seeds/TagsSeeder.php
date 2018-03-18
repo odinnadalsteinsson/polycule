@@ -12,21 +12,20 @@ class TagsSeeder extends Seeder
      */
     public function run()
     {
-        $genders = [
-            'mand',
-            'kvinde',
-        ];
-        foreach ($genders as $gender) {
-            Tag::findOrCreate($gender, 'gender');
-        }
+        // genders
+        $this->createTag('male', 'gender', 'Mand');
+        $this->createTag('female', 'gender', 'Kvinde');
 
-        $relationship_statuses = [
-            'single',
-            'i ét forhold',
-            'i flere forhold',
-        ];
-        foreach ($relationship_statuses as $relationship_status) {
-            Tag::findOrCreate($relationship_status, 'relationship-status');
-        }
+        // relationship statuses
+        $this->createTag('single', 'relationship-status', 'Single');
+        $this->createTag('one', 'relationship-status', 'I ét forhold');
+        $this->createTag('more', 'relationship-status', 'I flere forhold');
+    }
+
+    protected function createTag($name, $type, $translation, $language = 'da')
+    {
+        $tag = Tag::findOrCreate($name, $type);
+        $tag->setTranslation('name', $language, $translation);
+        $tag->save();
     }
 }

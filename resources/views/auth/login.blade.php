@@ -1,9 +1,9 @@
 @extends('layouts.content')
 
 @section('content')
-<v-layout column>
-  <v-flex xs12 sm6 offset-sm3>
-    <v-card>
+<v-layout column align-center justify-center>
+  <v-flex xs12 sm6>
+    <v-card hover>
       <v-card-title>
         <v-flex fluid>
           <h1>Log ind på {{ env('APP_NAME') }} her</h1>

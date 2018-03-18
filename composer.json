@@ -21,6 +21,7 @@
         "spatie/laravel-newsletter": "^4.1",
         "spatie/laravel-tags": "^2.0",
         "thomaswelton/laravel-gravatar": "^1.1",
+        "torann/geoip": "^1.0",
         "weblee/mandrill": "dev-master"
     },
     "require-dev": {
