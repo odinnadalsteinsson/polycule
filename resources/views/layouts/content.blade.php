@@ -19,8 +19,8 @@
     @include('gtm.body')
     <div id="app">
       <v-app style="background-image: url({{ "/images/" . env('BACKGROUND_PICTURE') }}); background-size: cover">
+        @include('organisms.navigation')
         <v-content>
-          @include('organisms.navigation')
           <v-container fluid fill-height grid-list-sm>
             @yield('content')
           </v-container>
