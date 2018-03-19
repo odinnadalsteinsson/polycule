@@ -55,8 +55,8 @@ class UserController extends Controller
     public function show(User $user)
     {
         $parser = new FullNameParser();
-        $names = $parser->parse_name(Auth::user()->name);
-        return view('pages.user', [ 'user' => Auth::user(), 'first' => $names['fname'], 'last' => $names['lname'] ]);
+        $names = $parser->parse_name($user->name);
+        return view('pages.user', [ 'user' => $user, 'first' => $names['fname'], 'last' => $names['lname'] ]);
     }
 
     /**

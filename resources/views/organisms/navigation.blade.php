@@ -1,7 +1,7 @@
 <v-toolbar color="red darken-4" class="white--text">
   <v-toolbar-title class="white--text">
     <a style="color: inherit; text-decoration: inherit;" href="/">{{ env('APP_NAME') }}</a>
-    {{ Request::ip() }}
+    {{-- {{ Request::ip() }} --}}
   </v-toolbar-title>
   <v-spacer></v-spacer>
   <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
