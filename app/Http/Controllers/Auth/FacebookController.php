@@ -8,6 +8,8 @@ use Bouncer;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use NaviOcean\Laravel\NameParser as FullNameParser;
+use Newsletter;
 use Spatie\Tags\Tag;
 use Socialite;
 
@@ -42,7 +44,7 @@ class FacebookController extends Controller
             $user->save();
         }
 
-        // Login and go to the profile home page
+        // Login the user
         Auth::login($user, true);
         if ($user->email == 'odinn@adalsteinsson.com') {
             Bouncer::assign('admin')->to($user);
@@ -50,8 +52,14 @@ class FacebookController extends Controller
             $user->attachTag($gender);
             $status = Tag::findOrCreate('I ét forhold', 'relationship-status');
             $user->attachTag($status);
-
         }
+
+        // Subscribe to newsletter
+        $parser = new FullNameParser();
+        $names = $parser->parse_name(Auth::user()->name);
+        Newsletter::subscribeOrUpdate($user->email, [ 'firstName' => $names['fname'], 'lastName' => $names['lname'] ]);
+
+        // Redirect to user home page
         return redirect('users/' . $user->id);
     }
 }

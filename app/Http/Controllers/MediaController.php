@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Tags\Tag;
 
-class HomeController extends Controller
+class MediaController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -20,12 +19,15 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Store a newly created resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function store(User $user)
     {
-        return redirect('/users/' . Auth::user()->id);
+        $user->addAllMediaFromRequest()->each(function ($fileAdder) {
+            $fileAdder->toMediaCollection();
+        });
     }
 }

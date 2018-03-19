@@ -32,11 +32,10 @@ export default {
       about: '',
     }),
     props: {
-        id: 0,
-        text: ''
+        id: null,
+        text: null
     },
     created() {
-        this.action = '/users/' + this.id
         this.about = this.text
     },
     computed: {

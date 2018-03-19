@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Bouncer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use NaviOcean\Laravel\NameParser as FullNameParser;
 use Newsletter;
 
 class UserController extends Controller
@@ -53,7 +54,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('pages.user', [ 'user' => $user ]);
+        $parser = new FullNameParser();
+        $names = $parser->parse_name(Auth::user()->name);
+        return view('pages.user', [ 'user' => Auth::user(), 'first' => $names['fname'], 'last' => $names['lname'] ]);
     }
 
     /**

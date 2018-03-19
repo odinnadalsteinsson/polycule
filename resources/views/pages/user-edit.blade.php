@@ -13,9 +13,11 @@
           </v-layout>
         </v-container>
       </v-card-media>
-      <dropzone style="border: 0px" id="myVueDropzone" url="/home/photo/{{ $user->id}}" v-on:vdropzone-success="showSuccess" :max-file-size-in-m-b="100">
+      <vue-dropzone style="border: 0px" :options="dropzoneOptions" id="myVueDropzone" url="/media/{{ $user->id}}" v-on:vdropzone-success="showSuccess" :max-file-size-in-m-b="100">
         {{ csrf_field() }}
-      </dropzone>
+      </vue-dropzone>
+      {{-- <dropzone style="border: 0px" id="myVueDropzone" url="/media/{{ $user->id}}" v-on:vdropzone-success="showSuccess" :max-file-size-in-m-b="100">
+      </dropzone> --}}
     </v-card>
   </v-flex>
 

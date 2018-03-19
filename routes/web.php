@@ -23,9 +23,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Profile home
+Route::get('home', 'HomeController@index');
+
 // Photo uploads
-Route::post('home/photo/{user}', 'HomeController@postPhoto');
-Route::get('home', 'HomeController@index')->name('home');
+Route::post('media/{user}', 'MediaController@store');
 
 // Import from mailchimp
 Route::get('users/import', 'UserController@import');

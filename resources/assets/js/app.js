@@ -10,7 +10,8 @@ window.Vue = require('vue');
 
 import Vuetify from 'vuetify'
 import Vuelidate from 'vuelidate'
-import Dropzone from 'vue2-dropzone'
+// import Dropzone from 'vue2-dropzone'
+import vue2Dropzone from 'vue2-dropzone'
 
 Vue.use(Vuetify)
 Vue.use(Vuelidate)
@@ -24,17 +25,10 @@ Vue.component('about', require('./molecules/about.vue'));
 
 Vue.component('image-uploader', {
   components: {
-    Dropzone
+    vueDropzone: vue2Dropzone
   },
   data() {
     return {
-      dzOptions: {
-        dictDefaultMessage: 'Drop your images here or click to choose (at least 400x400px)',
-        acceptedFiles: '.jpg,.jpeg,.png',
-        maxFiles: 2,
-        maxFilesize: 100,
-        headers: {'X-CSRF-TOKEN': Laravel.csrfToken}
-      },
     };
   },
   methods: {
@@ -47,7 +41,7 @@ Vue.component('image-uploader', {
 const app = new Vue({
     el: '#app',
     components: {
-      Dropzone
+        vueDropzone: vue2Dropzone
     },
     methods: {
       'showSuccess': function (file) {
@@ -56,7 +50,14 @@ const app = new Vue({
     },
     data () {
       return {
-        drawer: false
+        drawer: false,
+        dropzoneOptions: {
+          dictDefaultMessage: 'Drop your images here or click to choose (at least 400x400px)',
+          acceptedFiles: '.jpg,.jpeg,.png',
+          maxFiles: 2,
+          maxFilesize: 100,
+          headers: {'X-CSRF-TOKEN': Laravel.csrfToken},
+        },
       }
     }
 });
