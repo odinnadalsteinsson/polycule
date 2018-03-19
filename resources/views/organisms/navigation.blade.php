@@ -7,7 +7,7 @@
   <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
   <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
   <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
-  @if (Request::ip() == '176.23.218.114' || strpos(Request::ip(), '172.') !== false)
+  @if (Request::ip() == env('ADMIN_IP') || strpos(Request::ip(), '172.') !== false)
     @if (Auth::guest())
       <v-btn href="/login">Log ind</v-btn>
     @else
