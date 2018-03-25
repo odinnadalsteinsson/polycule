@@ -8,7 +8,7 @@
         <v-container fill-height fluid>
           <v-layout fill-height>
             <v-flex xs12 align-end flexbox>
-              <span class="headline">{{ $user->name ? $user->name : 'Medlem #' . $user->id }} {{ $user->age() ? $user->age() . ' år' : '' }}</span>
+              <span class="headline">{{ $first ? $first : 'Medlem #' . $user->id }} {{ $user->age() ? $user->age() . ' år' : '' }}</span>
             </v-flex>
           </v-layout>
         </v-container>
@@ -17,18 +17,25 @@
         <div>{!! nl2br($user->about) ?: 'Mangler beskrivelse' !!}</div>
       </v-card-title>
       <v-card-actions>
-        @forelse ($user->genders() as $gender)
-          <v-chip class="primary primary--text" outline>{{ $gender->name }}</v-chip>
-        @empty
-          <v-chip class="primary primary--text" outline>Køn ikke angivet</v-chip>
-        @endforelse
-        @forelse ($user->relationshipStatuses() as $status)
-          <v-chip class="red red--text" outline>{{ $status->name }}</v-chip>
-        @empty
-          <v-chip class="red red--text" outline>Forholdsstatus ikke angivet</v-chip>
-        @endforelse
+        <p>
+          @forelse ($user->genders() as $gender)
+            <v-chip class="primary primary--text" outline>{{ $gender->name }}</v-chip>
+          @empty
+            <v-chip class="primary primary--text" outline>Køn ikke angivet</v-chip>
+          @endforelse
+          @foreach ($data['body'] as $body)
+            <v-chip outline>{{ $body }}</v-chip>
+          @endforeach
+          @foreach ($data['sexuality'] as $sexuality)
+            <v-chip class="purple purple--text" outline>{{ $sexuality }}</v-chip>
+          @endforeach
+          @forelse ($user->relationshipStatuses() as $status)
+            <v-chip class="red red--text" outline>{{ $status->name }}</v-chip>
+          @empty
+            <v-chip class="red red--text" outline>Forholdsstatus ikke angivet</v-chip>
+          @endforelse
+        </p>
         @if (Auth::user()->id == $user->id || Auth::user()->isAn('admin'))
-          <v-spacer></v-spacer>
           <v-btn href="/users/{{ $user->id}}/edit">Ret profil</v-btn>
         @endif
       </v-card-actions>

@@ -22,6 +22,7 @@ Vue.component('logout', require('./components/Logout.vue'));
 Vue.component('register', require('./components/Register.vue'));
 Vue.component('chips', require('./components/Chips.vue'));
 Vue.component('about', require('./molecules/about.vue'));
+Vue.component('chip-box', require('./molecules/chip-box.vue'));
 
 Vue.component('image-uploader', {
   components: {

@@ -7,10 +7,11 @@
   <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
   <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
   <img height="30" src="/images/polydating_logo_top-1.png">&nbsp;
-  @if (Request::ip() == env('ADMIN_IP') || strpos(Request::ip(), '172.') !== false || Auth::user()->id == 1)
+  @if (Request::ip() == env('ADMIN_IP') || strpos(Request::ip(), '172.') !== false || (! Auth::guest() && Auth::user()->id == 1))
     @if (Auth::guest())
       <v-btn href="/login">Log ind</v-btn>
     @else
+      <v-btn href="/home">Profil</v-btn>
       <v-btn href="/users">Medlemmer</v-btn>
       <logout>{{ csrf_field() }}</logout>
     @endif

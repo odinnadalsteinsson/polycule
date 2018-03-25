@@ -8,7 +8,7 @@
         <v-container fill-height fluid>
           <v-layout fill-height>
             <v-flex xs12 align-end flexbox>
-              <span class="headline">{{ $user->name ? $user->name : 'Medlem #' . $user->id }} {{ $user->age() ? $user->age() . ' år' : '' }}</span>
+              <span class="headline">{{ $first ? $first : 'Medlem #' . $user->id }} {{ $user->age() ? $user->age() . ' år' : '' }}</span>
             </v-flex>
           </v-layout>
         </v-container>
@@ -33,22 +33,38 @@
   <v-flex xs12 sm6 md4>
     <v-card>
       <v-card-text>
-        <h2>Etiketter</h2>
+        <h2>Etiketter (demo data)</h2>
+        <div class="input-group input-group--focused input-group--dirty input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
+          <p>
+            <label>Personlige data</label>
+            @forelse ($user->genders() as $gender)
+              <v-chip close class="primary primary--text" outline>{{ $gender->name }}</v-chip>
+            @empty
+              <v-chip class="primary primary--text" outline>Køn ikke angivet</v-chip>
+            @endforelse
+            @foreach ($data['body'] as $body)
+              <v-chip close  class="primary primary--text" outline>{{ $body }}</v-chip>
+            @endforeach
+          </p>
+        </div>
+        <div class="input-group input-group--focused input-group--dirty input-group--text-field input-group--select input-group--autocomplete input-group--chips primary--text">
+          <p>
+            <label class="red--text">Seksualitet og forhold</label>
+            @foreach ($data['sexuality'] as $sexuality)
+              <v-chip close class="red red--text" outline>{{ $sexuality }}</v-chip>
+            @endforeach
+            @forelse ($user->relationshipStatuses() as $status)
+              <v-chip close class="red red--text" outline>{{ $status->name }}</v-chip>
+            @empty
+              <v-chip class="red red--text" outline>Forholdsstatus ikke angivet</v-chip>
+            @endforelse
+          </p>
+        </div>
+        <p>
+          <chip-box></chip-box>
+        </p>
       </v-card-text>
-      <v-card-actions>
-        @forelse ($user->genders() as $gender)
-          <v-chip close class="primary primary--text" outline>{{ $gender->name }}</v-chip>
-        @empty
-          <v-chip class="primary primary--text" outline>Køn ikke angivet</v-chip>
-        @endforelse
-        @forelse ($user->relationshipStatuses() as $status)
-          <v-chip close class="red red--text" outline>{{ $status->name }}</v-chip>
-        @empty
-          <v-chip class="red red--text" outline>Forholdsstatus ikke angivet</v-chip>
-        @endforelse
-      </v-card-actions>
     </v-card>
   </v-flex>
-
 </v-layout>
 @endsection

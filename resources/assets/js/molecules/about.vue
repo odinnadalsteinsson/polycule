@@ -14,8 +14,12 @@
     ></v-text-field>
     </v-text-field>
     <v-card-actions>
-        <v-spacer/>
-        <v-btn @click="submit">Gem</v-btn>
+      <v-checkbox primary
+        label="Privat"
+        v-model="private"
+      ></v-checkbox>
+      <v-spacer/>
+      <v-btn @click="submit">Gem</v-btn>
     </v-card-actions>
 </form>
 </template>
@@ -30,6 +34,7 @@ export default {
     },
     data: () => ({
       about: '',
+      private: true,
     }),
     props: {
         id: null,

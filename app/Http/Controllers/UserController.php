@@ -13,6 +13,12 @@ use Newsletter;
 
 class UserController extends Controller
 {
+    // Tag groups hardcoded for demo
+    private $data = [
+        'body' => [ '165 cm', '70 kg' ],
+        'sexuality' => [ 'hetero-fleksibel' ],
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +62,12 @@ class UserController extends Controller
     {
         $parser = new FullNameParser();
         $names = $parser->parse_name($user->name);
-        return view('pages.user', [ 'user' => $user, 'first' => $names['fname'], 'last' => $names['lname'] ]);
+        return view('pages.user', [
+            'user' => $user,
+            'first' => $names['fname'],
+            'last' => $names['lname'],
+            'data' => $this->data,
+        ]);
     }
 
     /**
@@ -67,10 +78,22 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $parser = new FullNameParser();
+        $names = $parser->parse_name($user->name);
         if (Auth::user()->id == $user->id || Auth::user()->isAn('admin')) {
-            return view('pages.user-edit', [ 'user' => $user ]);
+            return view('pages.user-edit', [
+                'user' => $user,
+                'first' => $names['fname'],
+                'last' => $names['lname'],
+                'data' => $this->data,
+            ]);
         }
-        return view('pages.user', [ 'user' => $user ]);
+        return view('pages.user', [
+            'user' => $user,
+            'first' => $names['fname'],
+            'last' => $names['lname'],
+            'data' => $this->data,
+        ]);
     }
 
     /**
@@ -82,7 +105,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->about = $request->about;
+        $user->about = trim($request->about);
         $user->save();
         return 200;
     }
